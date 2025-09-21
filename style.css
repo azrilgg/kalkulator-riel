@@ -6,7 +6,18 @@
   outline: none;
   background-color: #ecf0f3;
 }
+/* Background full layar */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
 
+  background: url("image/laut.jpg") no-repeat center center fixed;
+  background-size: cover; /* biar nutup full layar */
+}
 .container {
   height: 100vh;
   display: flex;
@@ -24,15 +35,7 @@
   box-shadow: inset 5px 5px 12px #fff,
               inset 5px 5px 12px rgba(0,0,0,0.16);
 }
-.bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover; /* biar nutup layar */
-  z-index: -1;       /* biar di belakang */
-}
+
 input {
   width: 260px;
   height: 70px;
