@@ -24,7 +24,15 @@
   box-shadow: inset 5px 5px 12px #fff,
               inset 5px 5px 12px rgba(0,0,0,0.16);
 }
-
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* biar nutup layar */
+  z-index: -1;       /* biar di belakang */
+}
 input {
   width: 260px;
   height: 70px;
