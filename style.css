@@ -4,7 +4,6 @@
   box-sizing: border-box;
   font-family: sans-serif;
   outline: none;
-  background-color: #ecf0f3;
 }
 /* Background full layar */
 body {
@@ -27,9 +26,9 @@ body {
 }
 
 .calculator {
+  background-color: #ecf0f3;
   padding: 20px;
   border-radius: 30px;
-  border: none;
   display: grid;
   grid-template-columns: repeat(4, 68px);
   box-shadow: inset 5px 5px 12px #fff,
