@@ -37,7 +37,7 @@ buttons.forEach(btn => {
 modeBtn.addEventListener("click", () => {
     body.classList.toggle("light");
 
-    if (body.classList.contains("light")) {
+    if (body.classList.contains("light-mode")) {
         modeBtn.textContent = "🌞 Mode Siang";
     } else {
         modeBtn.textContent = "🌙 Mode Malam";
