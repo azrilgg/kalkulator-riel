@@ -24,7 +24,6 @@ body {
 /* ============================================================
    GLOBAL
 ============================================================ */
-
 /* Judul warna emas */
 .title {
     font-size: 2.8rem;
@@ -35,8 +34,8 @@ body {
     color: transparent;
     text-shadow: 0 0 18px rgba(255, 200, 0, 0.5);
 
-    margin-top: 5px;   /* tidak terlalu tinggi */
-    margin-bottom: 35px;
+    margin-top: 0;          /* fix */
+    margin-bottom: 10px;    /* fix */
 }
 
 /* Deskripsi */
@@ -45,7 +44,7 @@ body {
     font-size: 1rem;
     color: #fff;
     opacity: 0.8;
-    margin-bottom: 30px;
+    margin-bottom: 0;        /* fix */
 }
 
 
