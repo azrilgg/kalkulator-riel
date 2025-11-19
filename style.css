@@ -81,51 +81,7 @@ body {
   --btn-eq-text: white;
 }
 
-/* ============================
-   MODE TERANG (FIX SUPER CERAH)
-=============================== */
 
-.light-mode {
-    background: #ffffff !important;        /* Full putih */
-    color: #000 !important;
-}
-
-.light-mode #calcBox {
-    background: rgba(255, 255, 255, 0.95); /* Hampir solid */
-    border: 1.5px solid rgba(0, 0, 0, 0.25);
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
-}
-
-.light-mode #display {
-    background: #ffffff;
-    color: #000;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.12);
-}
-
-/* Tombol mode terang */
-.light-mode .btn {
-    background: rgba(0, 0, 0, 0.08);
-    color: #000;
-}
-
-.light-mode .btn:hover {
-    background: rgba(0, 0, 0, 0.18);
-}
-
-.light-mode .btn.op {
-    background: rgba(0, 120, 255, 0.18);
-    color: #000;
-}
-
-.light-mode .btn.danger {
-    background: rgba(255, 0, 0, 0.35);
-    color: white;
-}
-
-.light-mode .btn.equals {
-    background: #0088ff;
-    color: #fff;
-}
 /* ===========================================
    TITLE
 =========================================== */
