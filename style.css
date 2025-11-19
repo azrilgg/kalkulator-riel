@@ -17,59 +17,82 @@ body {
   background: url("image/laut.jpg") no-repeat center center fixed;
   background-size: cover; /* biar nutup full layar */
 }
-.container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+/* Tombol dasar */
+.btn {
+    padding: 18px 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    backdrop-filter: blur(10px);
+    transition: 0.25s;
+    box-shadow: 0 0 12px #00eaff60;
 }
 
-.calculator {
-  background-color: #ecf0f3;
-  padding: 20px;
-  border-radius: 30px;
-  display: grid;
-  grid-template-columns: repeat(4, 68px);
-  box-shadow: inset 5px 5px 12px #fff,
-              inset 5px 5px 12px rgba(0,0,0,0.16);
+/* Hover */
+.btn:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: scale(1.06);
+    box-shadow: 0 0 18px #00eaff;
 }
 
-input {
-  width: 260px;
-  height: 70px;
-  grid-column: span 4;
-  text-align: end;
-  background: #ecf0f3;
-  margin: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 20px;
-  border: none;
-  border-radius: 30px;
-  font-size: 50px;
-  box-shadow: inset -5px -5px 12px #fff,
-              inset 5px 5px 12px rgba(0,0,0,0.16);
-  color: rgba(70,70,70);
+/* Operator */
+.btn.op {
+    background: rgba(0, 247, 255, 0.25);
+    box-shadow: 0 0 14px #00eaffaa;
 }
 
-button {
-  width: 48px;
-  height: 48px;
-  margin: 8px;
-  background: #ecf0f3;
-  border-radius: 50%;
-  box-shadow: -5px -5px 12px #fff,
-               5px 5px 12px rgba(0,0,0,0.16);
-  border: none;
-  font-size: 16px;
+/* Danger (C) */
+.btn.danger {
+    background: rgba(255, 40, 40, 0.45);
+    box-shadow: 0 0 14px #ff2b2b;
 }
 
-.eval {
-  width: 115px;
-  background: #ecf0f3;
-  box-shadow: -5px -5px 12px #fff,
-               5px 5px 12px rgba(0,0,0,0.16);
-  border: none;
-  border-radius: 30px;
+/* Angka 0 lebar */
+.btn.zero {
+    font-size: 1.8rem;
+}
+
+/* Tombol = */
+.btn.equals {
+    background: #00f7ff;
+    color: black;
+    font-weight: 900;
+    box-shadow: 0 0 25px #00eaff;
+}
+
+.btn.equals:hover {
+    background: white;
+    box-shadow: 0 0 35px white;
+}
+
+/* MODE TERANG */
+.light #calcBox {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 40px #00aaff40;
+}
+
+.light #display {
+    background: white;
+    color: black;
+}
+
+.light .btn {
+    background: rgba(0, 0, 0, 0.08);
+    color: black;
+}
+
+.light .btn.op {
+    background: rgba(0, 150, 255, 0.25);
+    color: black;
+}
+
+.light .btn.equals {
+    background: #0099ff;
+    color: white;
+}
+
+.light body {
+    background: #eaf6ff !important;
 }
