@@ -1,40 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Calculator Neumorphism</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Dewa High-End</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/a2e860f305.js" crossorigin="anonymous"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-  <div class="container">
-    <div class="calculator">
-      <input type="text" placeholder="0" id="screen">
-      
-      <button onclick="del()">DEL</button>
-      <button onclick="C()">C</button>
-      <button onclick="display('/')">/</button>
-      <button onclick="display('*')">*</button>
+<body id="body" class="bg-[#0a0f1f] min-h-screen flex flex-col justify-center items-center font-[Poppins] transition-all">
 
-      <button onclick="display('7')">7</button>
-      <button onclick="display('8')">8</button>
-      <button onclick="display('9')">9</button>
-      <button onclick="display('-')">-</button>
+    <!-- Mode Switch -->
+    <button id="modeBtn"
+        class="fixed top-5 right-5 px-4 py-2 rounded-xl bg-white/10 text-white backdrop-blur-xl shadow-lg text-sm 
+        hover:bg-white/20 transition-all">
+        🌙 Mode Malam
+    </button>
 
-      <button onclick="display('4')">4</button>
-      <button onclick="display('5')">5</button>
-      <button onclick="display('6')">6</button>
-      <button onclick="display('+')">+</button>
-
-      <button onclick="display('1')">1</button>
-      <button onclick="display('2')">2</button>
-      <button onclick="display('3')">3</button>
-      <button onclick="display('.')">.</button>
-
-      <button onclick="display('0')">0</button>
-      <button onclick="calculate()" class="eval">=</button>
+    <!-- Title -->
+    <div class="text-center mb-8 animate__animated animate__fadeInDown">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-cyan-400 drop-shadow-[0_0_20px_#00eaff]">
+            KALKULATOR DEWA
+        </h1>
+        <p class="text-gray-300 mt-1 tracking-wider">Futuristic • High End • Responsive</p>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <!-- Calculator Box -->
+    <div id="calcBox"
+        class="w-[90%] max-w-[420px] p-6 rounded-2xl bg-white/10 backdrop-blur-2xl shadow-[0_0_50px_#00eaff55] 
+        animate__animated animate__zoomIn transition-all">
+
+        <!-- Display -->
+        <div id="display"
+            class="w-full h-28 md:h-32 mb-6 rounded-xl bg-black/30 text-right text-white text-5xl md:text-6xl 
+            px-5 flex items-center justify-end overflow-hidden shadow-[0_0_25px_#00eaff55] transition-all">
+            0
+        </div>
+
+        <!-- Buttons -->
+        <div class="grid grid-cols-4 gap-4">
+
+            <!-- Row 1 -->
+            <button class="btn danger" data-key="C">C</button>
+            <button class="btn op" data-key="/">÷</button>
+            <button class="btn op" data-key="*">×</button>
+            <button class="btn op" data-key="-">−</button>
+
+            <!-- Row 2 -->
+            <button class="btn num" data-key="7">7</button>
+            <button class="btn num" data-key="8">8</button>
+            <button class="btn num" data-key="9">9</button>
+            <button class="btn op" data-key="+">+</button>
+
+            <!-- Row 3 -->
+            <button class="btn num" data-key="4">4</button>
+            <button class="btn num" data-key="5">5</button>
+            <button class="btn num" data-key="6">6</button>
+            <button class="btn equals row-span-2" data-key="=">=</button>
+
+            <!-- Row 4 -->
+            <button class="btn num" data-key="1">1</button>
+            <button class="btn num" data-key="2">2</button>
+            <button class="btn num" data-key="3">3</button>
+
+            <!-- Row 5 -->
+            <button class="btn zero col-span-2" data-key="0">0</button>
+            <button class="btn num" data-key=".">.</button>
+        </div>
+    </div>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
 </body>
 </html>
