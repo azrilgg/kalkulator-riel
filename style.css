@@ -2,238 +2,200 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   outline: none;
 }
 
-/* Background full layar */
 body {
-  margin: 0;
   min-height: 100vh;
   display: flex;
-  flex-direction: column; /* FIX: supaya title di atas, kalkulator di bawah */
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  font-family: Arial, sans-serif;
 
   background: url("image/laut.jpg") no-repeat center center fixed;
   background-size: cover;
-  padding-top: 40px; /* jarak aman untuk header */
+
+  padding-top: 40px;
+  overflow-x: hidden;
 }
 
 /* ============================================================
-   GLOBAL
+   TITLE SECTION
 ============================================================ */
-/* Judul warna emas */
 .title {
-    font-size: 2.8rem;
-    font-weight: 900;
-    text-align: center;
-    background: linear-gradient(90deg, #ffdd55, #ffb300, #ffd700);
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 18px rgba(255, 200, 0, 0.5);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
 
-    margin-top: 0;          /* fix */
-    margin-bottom: 10px;    /* fix */
+  background: linear-gradient(90deg, #ffe066, #ffc300, #ffea00);
+  -webkit-background-clip: text;
+  color: transparent;
+
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 25px rgba(255, 225, 0, 0.4);
+
+  margin-bottom: 5px;
 }
 
-/* Deskripsi */
 .subtitle {
-    text-align: center;
-    font-size: 1rem;
-    color: #fff;
-    opacity: 0.8;
-    margin-bottom: 0;        /* fix */
+  text-align: center;
+  font-size: clamp(0.8rem, 1.6vw, 1.1rem);
+  color: #ffffffdd;
+  letter-spacing: 1px;
+  opacity: 0.85;
+  margin-bottom: 25px;
 }
-
 
 /* ============================================================
-   KONTENER KALKULATOR
+   CALCULATOR CONTAINER
 ============================================================ */
-
 #calcBox {
-    max-width: 420px;
-    width: 90%;
-    padding: 25px;
-    margin: auto;
-    border-radius: 22px;
+  width: min(92%, 430px);
+  padding: 30px;
+  border-radius: 28px;
 
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(25px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
 
-    box-shadow: 0 0 35px rgba(0, 255, 255, 0.25);
-    border: 1.5px solid rgba(255, 255, 255, 0.18);
-    transition: 0.25s;
+  box-shadow:
+    0 0 50px rgba(0, 255, 255, 0.25),
+    inset 0 0 20px rgba(0, 255, 255, 0.12);
+
+  transform: translateY(0);
+  transition: 0.25s;
 }
 
-/* Mode terang */
-.light #calcBox {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    border: 1.5px solid rgba(0, 0, 0, 0.15);
-    box-shadow: 0 0 35px rgba(0, 150, 255, 0.25);
+#calcBox:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 55px rgba(0, 255, 255, 0.35),
+    inset 0 0 22px rgba(0, 255, 255, 0.2);
 }
-
 
 /* ============================================================
    DISPLAY
 ============================================================ */
-
 #display {
-    width: 100%;
-    height: 90px;
-    font-size: 2.4rem;
-    border-radius: 14px;
-    background: rgba(0, 0, 0, 0.55);
-    color: #00eaff;
-    padding: 18px;
-    text-align: right;
-    overflow: hidden;
-    box-shadow: inset 0 0 18px rgba(0, 255, 255, 0.2);
-    margin-bottom: 20px;
-    transition: 0.25s;
-}
+  width: 100%;
+  height: 95px;
 
-/* mode terang */
-.light #display {
-    background: rgba(255, 255, 255, 0.9);
-    color: black;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
-}
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  padding: 18px;
+  border-radius: 18px;
 
+  background: linear-gradient(145deg, rgba(0,0,0,0.6), rgba(0,0,0,0.45));
+  color: #00eaff;
+  text-shadow: 0 0 8px #00eaffaa;
+
+  text-align: right;
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 0 25px rgba(0,255,255,0.18),
+    0 0 18px rgba(0,255,255,0.22);
+
+  margin-bottom: 22px;
+  transition: 0.3s ease;
+}
 
 /* ============================================================
-   TOMBOL
+   BUTTONS
 ============================================================ */
-
 .btn {
-    padding: 18px 0;
-    font-size: 1.6rem;
-    font-weight: 700;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    backdrop-filter: blur(10px);
-    transition: 0.25s;
-    box-shadow: 0 0 12px #00eaff60;
-    border: 1px solid rgba(255,255,255,0.1);
+  padding: clamp(14px, 3vw, 20px) 0;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-weight: 700;
+
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(15px);
+  color: #fff;
+
+  box-shadow:
+    0 0 15px rgba(0,255,255,0.28),
+    inset 0 0 10px rgba(255,255,255,0.1);
+
+  transition: 0.2s ease-out;
 }
 
 .btn:hover {
-    background: rgba(255, 255, 255, 0.28);
-    transform: scale(1.06);
-    box-shadow: 0 0 18px #00eaff;
+  transform: translateY(-4px) scale(1.05);
+  background: rgba(255,255,255,0.22);
+  box-shadow:
+    0 0 22px #00eaff,
+    inset 0 0 14px rgba(255,255,255,0.18);
 }
 
-/* Operator */
+/* Operator Buttons */
 .btn.op {
-    background: rgba(0, 247, 255, 0.25);
-    box-shadow: 0 0 14px #00eaffaa;
-    font-weight: 800;
+  background: rgba(0, 247, 255, 0.25);
+  font-weight: 800;
+  box-shadow: 0 0 18px rgba(0,255,255,0.45);
 }
 
-/* Danger (C) */
+.btn.op:hover {
+  background: rgba(0, 255, 255, 0.35);
+}
+
+/* Clear Button */
 .btn.danger {
-    background: rgba(255, 40, 40, 0.45);
-    box-shadow: 0 0 14px #ff2b2b;
+  background: rgba(255, 60, 60, 0.45);
+  box-shadow: 0 0 18px rgba(255,40,40,0.55);
 }
 
-/* Angka 0 */
+.btn.danger:hover {
+  background: rgba(255,80,80,0.6);
+}
+
+/* Zero */
 .btn.zero {
-    font-size: 1.8rem;
+  font-size: clamp(1.4rem, 3.3vw, 1.9rem);
 }
 
-/* Tombol = */
+/* Equals */
 .btn.equals {
-    background: #00f7ff;
-    color: black;
-    font-weight: 900;
-    box-shadow: 0 0 25px #00eaff;
+  background: #00f7ff;
+  color: black;
+  font-weight: 900;
+
+  box-shadow:
+    0 0 25px #00f7ff,
+    inset 0 0 18px rgba(0,255,255,0.4);
 }
 
 .btn.equals:hover {
-    background: white;
-    box-shadow: 0 0 35px white;
+  background: white;
+  box-shadow:
+    0 0 35px white,
+    inset 0 0 25px white;
 }
-
 
 /* ============================================================
-   MODE TERANG (BUTTONS)
+   RESPONSIVE MEDIA
 ============================================================ */
-
-.light .btn {
-    background: rgba(0, 0, 0, 0.08);
-    color: black;
-}
-
-.light .btn.op {
-    background: rgba(0, 150, 255, 0.2);
-    color: black;
-}
-
-.light .btn.danger {
-    background: rgba(255, 0, 0, 0.3);
-    color: white;
-}
-
-.light .btn.equals {
-    background: #0099ff;
-    color: white;
-}
-
-.light body {
-    background: #eaf6ff !important;
-}
-
-
-/* ============================================================
-   RESPONSIVE
-============================================================ */
-
 @media (max-width: 480px) {
-    .title {
-        font-size: 2rem;
-        margin-top: 15px;
-    }
+  #calcBox {
+    padding: 22px;
+  }
 
-    .subtitle {
-        font-size: 0.9rem;
-    }
-
-    #calcBox {
-        padding: 18px;
-        width: 92%;
-    }
-
-    #display {
-        height: 75px;
-        font-size: 2rem;
-        padding: 14px;
-    }
-
-    .btn {
-        padding: 15px 0;
-        font-size: 1.4rem;
-    }
-
-    .btn.zero {
-        font-size: 1.5rem;
-    }
-
-    .btn.equals {
-        font-size: 1.5rem;
-    }
+  #display {
+    height: 75px;
+    padding: 14px;
+  }
 }
 
 @media (min-width: 768px) {
-    body {
-        padding-top: 60px;
-    }
+  body {
+    padding-top: 55px;
+  }
 }
 
 @media (min-width: 1024px) {
-    body {
-        padding-top: 80px;
-    }
+  body {
+    padding-top: 75px;
+  }
 }
