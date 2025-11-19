@@ -128,6 +128,8 @@ body {
 #display {
   width: 100%;
   height: 90px;
+  overflow-x: auto;      /* biar bisa geser kanan-kiri */
+  white-space: nowrap;   /* biar angka tidak turun baris */
 
   background: var(--display-bg);
   color: var(--display-text);
