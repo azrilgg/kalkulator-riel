@@ -32,6 +32,9 @@ body {
     color: transparent;
     text-shadow: 0 0 18px rgba(255, 200, 0, 0.5);
     margin-bottom: 15px;
+
+    /* Tambahan posisi */
+    margin-top: 40px;
 }
 
 /* Deskripsi */
@@ -41,6 +44,9 @@ body {
     color: #fff;
     opacity: 0.8;
     margin-bottom: 25px;
+
+    /* Tambahan posisi */
+    margin-top: -5px;
 }
 
 
