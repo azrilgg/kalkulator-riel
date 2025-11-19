@@ -17,7 +17,93 @@ body {
   background: url("image/laut.jpg") no-repeat center center fixed;
   background-size: cover; /* biar nutup full layar */
 }
-/* Tombol dasar */
+
+/* ============================================================
+   GLOBAL
+============================================================ */
+
+/* Judul warna emas */
+.title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(90deg, #ffdd55, #ffb300, #ffd700);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 18px rgba(255, 200, 0, 0.5);
+    margin-bottom: 15px;
+}
+
+/* Deskripsi */
+.subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: #fff;
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+
+/* ============================================================
+   KONTENER KALKULATOR
+============================================================ */
+
+#calcBox {
+    max-width: 420px;
+    width: 90%;
+    padding: 25px;
+    margin: auto;
+    border-radius: 22px;
+
+    /* Tidak terlalu transparan */
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(20px);
+
+    box-shadow: 0 0 35px rgba(0, 255, 255, 0.25);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    transition: 0.25s;
+}
+
+/* Mode terang */
+.light #calcBox {
+    background: rgba(255, 255, 255, 0.85); /* lebih solid & terang */
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 35px rgba(0, 150, 255, 0.25);
+}
+
+
+/* ============================================================
+   DISPLAY
+============================================================ */
+
+#display {
+    width: 100%;
+    height: 90px;
+    font-size: 2.4rem;
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #00eaff;
+    padding: 18px;
+    text-align: right;
+    overflow: hidden;
+    box-shadow: inset 0 0 18px rgba(0, 255, 255, 0.2);
+    margin-bottom: 20px;
+    transition: 0.25s;
+}
+
+/* mode terang */
+.light #display {
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ============================================================
+   TOMBOL
+============================================================ */
+
 .btn {
     padding: 18px 0;
     font-size: 1.6rem;
@@ -28,6 +114,7 @@ body {
     backdrop-filter: blur(10px);
     transition: 0.25s;
     box-shadow: 0 0 12px #00eaff60;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* Hover */
@@ -41,6 +128,7 @@ body {
 .btn.op {
     background: rgba(0, 247, 255, 0.25);
     box-shadow: 0 0 14px #00eaffaa;
+    font-weight: 800;
 }
 
 /* Danger (C) */
@@ -67,16 +155,10 @@ body {
     box-shadow: 0 0 35px white;
 }
 
-/* MODE TERANG */
-.light #calcBox {
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 0 40px #00aaff40;
-}
 
-.light #display {
-    background: white;
-    color: black;
-}
+/* ============================================================
+   MODE TERANG (BUTTONS)
+============================================================ */
 
 .light .btn {
     background: rgba(0, 0, 0, 0.08);
@@ -84,8 +166,13 @@ body {
 }
 
 .light .btn.op {
-    background: rgba(0, 150, 255, 0.25);
+    background: rgba(0, 150, 255, 0.2);
     color: black;
+}
+
+.light .btn.danger {
+    background: rgba(255, 0, 0, 0.3);
+    color: white;
 }
 
 .light .btn.equals {
@@ -95,4 +182,4 @@ body {
 
 .light body {
     background: #eaf6ff !important;
-}
+  }
