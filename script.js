@@ -14,6 +14,12 @@ buttons.forEach(btn => {
             current = "";
             display.textContent = "0";
             gsap.fromTo(display, {scale:1.1}, {scale:1, duration:0.2});
+
+            // Reset scroll ke kiri
+            setTimeout(() => {
+                display.scrollLeft = 0;
+            }, 0);
+
             return;
         }
 
@@ -22,17 +28,25 @@ buttons.forEach(btn => {
                 current = eval(current).toString();
                 display.textContent = current;
                 gsap.fromTo(display, {scale:1.2}, {scale:1, duration:0.2});
+
+                // HASIL → auto-scroll ke kiri (angka awal terlihat)
+                setTimeout(() => {
+                    display.scrollLeft = 0;
+                }, 0);
+
             } catch {
                 display.textContent = "Error";
             }
             return;
         }
 
+        // Mengetik angka → auto scroll ke kanan
         current += key;
         display.textContent = current;
-setTimeout(() => {
-    display.scrollLeft = display.scrollWidth;
-}, 0);
+
+        setTimeout(() => {
+            display.scrollLeft = display.scrollWidth;
+        }, 0);
     });
 });
 
