@@ -5,17 +5,20 @@
   font-family: sans-serif;
   outline: none;
 }
+
 /* Background full layar */
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* FIX: supaya title di atas, kalkulator di bawah */
+  justify-content: flex-start;
   align-items: center;
   font-family: Arial, sans-serif;
 
   background: url("image/laut.jpg") no-repeat center center fixed;
-  background-size: cover; /* biar nutup full layar */
+  background-size: cover;
+  padding-top: 40px; /* jarak aman untuk header */
 }
 
 /* ============================================================
@@ -31,10 +34,9 @@ body {
     -webkit-background-clip: text;
     color: transparent;
     text-shadow: 0 0 18px rgba(255, 200, 0, 0.5);
-    margin-bottom: 15px;
 
-    /* Tambahan posisi */
-    margin-top: 40px;
+    margin-top: 20px;   /* tidak terlalu tinggi */
+    margin-bottom: 10px;
 }
 
 /* Deskripsi */
@@ -43,10 +45,7 @@ body {
     font-size: 1rem;
     color: #fff;
     opacity: 0.8;
-    margin-bottom: 25px;
-
-    /* Tambahan posisi */
-    margin-top: -5px;
+    margin-bottom: 30px;
 }
 
 
@@ -61,7 +60,6 @@ body {
     margin: auto;
     border-radius: 22px;
 
-    /* Tidak terlalu transparan */
     background: rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(20px);
 
@@ -72,7 +70,7 @@ body {
 
 /* Mode terang */
 .light #calcBox {
-    background: rgba(255, 255, 255, 0.85); /* lebih solid & terang */
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(12px);
     border: 1.5px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 0 35px rgba(0, 150, 255, 0.25);
@@ -123,7 +121,6 @@ body {
     border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Hover */
 .btn:hover {
     background: rgba(255, 255, 255, 0.28);
     transform: scale(1.06);
@@ -143,7 +140,7 @@ body {
     box-shadow: 0 0 14px #ff2b2b;
 }
 
-/* Angka 0 lebar */
+/* Angka 0 */
 .btn.zero {
     font-size: 1.8rem;
 }
@@ -188,4 +185,56 @@ body {
 
 .light body {
     background: #eaf6ff !important;
-  }
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+        margin-top: 15px;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    #calcBox {
+        padding: 18px;
+        width: 92%;
+    }
+
+    #display {
+        height: 75px;
+        font-size: 2rem;
+        padding: 14px;
+    }
+
+    .btn {
+        padding: 15px 0;
+        font-size: 1.4rem;
+    }
+
+    .btn.zero {
+        font-size: 1.5rem;
+    }
+
+    .btn.equals {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        padding-top: 80px;
+    }
+}
