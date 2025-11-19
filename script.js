@@ -30,6 +30,9 @@ buttons.forEach(btn => {
 
         current += key;
         display.textContent = current;
+setTimeout(() => {
+    display.scrollLeft = display.scrollWidth;
+}, 0);
     });
 });
 
