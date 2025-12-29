@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calculator Pro 3D | Ultimate Scientific Calculator</title>
+
+    <!-- SEO Meta -->
+    <meta name="description"
+        content="Professional 3D Calculator with Scientific, Programmer, and Basic modes. Features immersive Three.js particle background and premium glassmorphism design.">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Three.js 3D Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Overlay for better readability -->
+    <div class="bg-overlay"></div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <span>Calculator Pro 3D</span>
+            </div>
+            <div class="header-controls">
+                <button id="historyToggle" class="control-btn" title="History">
+                    <i class="fas fa-history"></i>
+                </button>
+                <button id="themeToggle" class="control-btn" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Calculator Container -->
+        <div class="calculator-wrapper">
+
+            <!-- History Panel Backdrop -->
+            <div id="historyBackdrop" class="history-backdrop"></div>
+
+            <!-- History Panel -->
+            <aside id="historyPanel" class="history-panel">
+                <div class="history-header">
+                    <h3><i class="fas fa-clock-rotate-left"></i> History</h3>
+                    <div class="history-header-btns">
+                        <button id="clearHistory" class="clear-btn" title="Clear History">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button id="closeHistory" class="close-history-btn" title="Close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="historyList" class="history-list">
+                    <div class="history-empty">
+                        <i class="fas fa-calculator"></i>
+                        <p>No calculations yet</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Calculator -->
+            <main class="calculator" id="calculator">
+
+                <!-- Mode Tabs -->
+                <div class="mode-tabs">
+                    <button class="mode-tab active" data-mode="basic">
+                        <i class="fas fa-calculator"></i>
+                        <span>Basic</span>
+                    </button>
+                    <button class="mode-tab" data-mode="scientific">
+                        <i class="fas fa-flask"></i>
+                        <span>Scientific</span>
+                    </button>
+                    <button class="mode-tab" data-mode="programmer">
+                        <i class="fas fa-code"></i>
+                        <span>Programmer</span>
+                    </button>
+                </div>
+
+                <!-- Display Section -->
+                <div class="display-section">
+                    <!-- Memory Indicator -->
+                    <div class="memory-indicator" id="memoryIndicator">
+                        <span class="memory-label">M</span>
+                    </div>
+
+                    <!-- Expression Display -->
+                    <div class="expression-display" id="expressionDisplay"></div>
+
+                    <!-- Main Display -->
+                    <div class="main-display" id="mainDisplay">0</div>
+
+                    <!-- Programmer Mode Info -->
+                    <div class="programmer-info" id="programmerInfo">
+                        <div class="base-row">
+                            <span class="base-label">HEX</span>
+                            <span class="base-value" id="hexValue">0</span>
+                        </div>
+                        <div class="base-row">
+                            <span class="base-label">DEC</span>
+                            <span class="base-value" id="decValue">0</span>
+                        </div>
+                        <div class="base-row">
+                            <span class="base-label">OCT</span>
+                            <span class="base-value" id="octValue">0</span>
+                        </div>
+                        <div class="base-row">
+                            <span class="base-label">BIN</span>
+                            <span class="base-value" id="binValue">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basic Mode Buttons -->
+                <div class="button-grid basic-grid" id="basicGrid">
+                    <!-- Row 1: Memory -->
+                    <button class="calc-btn memory" data-action="mc">MC</button>
+                    <button class="calc-btn memory" data-action="mr">MR</button>
+                    <button class="calc-btn memory" data-action="m+">M+</button>
+                    <button class="calc-btn memory" data-action="m-">M−</button>
+
+                    <!-- Row 2 -->
+                    <button class="calc-btn clear" data-action="clear">C</button>
+                    <button class="calc-btn clear-entry" data-action="ce">CE</button>
+                    <button class="calc-btn operator" data-action="backspace"><i
+                            class="fas fa-delete-left"></i></button>
+                    <button class="calc-btn operator" data-action="/">÷</button>
+
+                    <!-- Row 3 -->
+                    <button class="calc-btn number" data-value="7">7</button>
+                    <button class="calc-btn number" data-value="8">8</button>
+                    <button class="calc-btn number" data-value="9">9</button>
+                    <button class="calc-btn operator" data-action="*">×</button>
+
+                    <!-- Row 4 -->
+                    <button class="calc-btn number" data-value="4">4</button>
+                    <button class="calc-btn number" data-value="5">5</button>
+                    <button class="calc-btn number" data-value="6">6</button>
+                    <button class="calc-btn operator" data-action="-">−</button>
+
+                    <!-- Row 5 -->
+                    <button class="calc-btn number" data-value="1">1</button>
+                    <button class="calc-btn number" data-value="2">2</button>
+                    <button class="calc-btn number" data-value="3">3</button>
+                    <button class="calc-btn operator" data-action="+">+</button>
+
+                    <!-- Row 6 -->
+                    <button class="calc-btn function" data-action="negate">±</button>
+                    <button class="calc-btn number" data-value="0">0</button>
+                    <button class="calc-btn number" data-value=".">.</button>
+                    <button class="calc-btn equals" data-action="=">=</button>
+                </div>
+
+                <!-- Scientific Mode Buttons -->
+                <div class="button-grid scientific-grid" id="scientificGrid">
+                    <!-- Row 1: Advanced Functions -->
+                    <button class="calc-btn function" data-action="shift" id="shiftBtn">2nd</button>
+                    <button class="calc-btn function" data-action="pi">π</button>
+                    <button class="calc-btn function" data-action="e">e</button>
+                    <button class="calc-btn clear" data-action="clear">C</button>
+                    <button class="calc-btn operator" data-action="backspace"><i
+                            class="fas fa-delete-left"></i></button>
+
+                    <!-- Row 2 -->
+                    <button class="calc-btn function" data-action="square">x²</button>
+                    <button class="calc-btn function" data-action="reciprocal">1/x</button>
+                    <button class="calc-btn function" data-action="abs">|x|</button>
+                    <button class="calc-btn function" data-action="exp">exp</button>
+                    <button class="calc-btn function" data-action="mod">mod</button>
+
+                    <!-- Row 3 -->
+                    <button class="calc-btn function" data-action="sqrt">√x</button>
+                    <button class="calc-btn function" data-action="(">&#40;</button>
+                    <button class="calc-btn function" data-action=")">&#41;</button>
+                    <button class="calc-btn function" data-action="factorial">n!</button>
+                    <button class="calc-btn operator" data-action="/">÷</button>
+
+                    <!-- Row 4 -->
+                    <button class="calc-btn function" data-action="power">xʸ</button>
+                    <button class="calc-btn number" data-value="7">7</button>
+                    <button class="calc-btn number" data-value="8">8</button>
+                    <button class="calc-btn number" data-value="9">9</button>
+                    <button class="calc-btn operator" data-action="*">×</button>
+
+                    <!-- Row 5 -->
+                    <button class="calc-btn function" data-action="10x">10ˣ</button>
+                    <button class="calc-btn number" data-value="4">4</button>
+                    <button class="calc-btn number" data-value="5">5</button>
+                    <button class="calc-btn number" data-value="6">6</button>
+                    <button class="calc-btn operator" data-action="-">−</button>
+
+                    <!-- Row 6 -->
+                    <button class="calc-btn function sci-func" data-action="log">log</button>
+                    <button class="calc-btn number" data-value="1">1</button>
+                    <button class="calc-btn number" data-value="2">2</button>
+                    <button class="calc-btn number" data-value="3">3</button>
+                    <button class="calc-btn operator" data-action="+">+</button>
+
+                    <!-- Row 7 -->
+                    <button class="calc-btn function sci-func" data-action="ln">ln</button>
+                    <button class="calc-btn function" data-action="negate">±</button>
+                    <button class="calc-btn number" data-value="0">0</button>
+                    <button class="calc-btn number" data-value=".">.</button>
+                    <button class="calc-btn equals" data-action="=">=</button>
+
+                    <!-- Row 8: Trig Functions -->
+                    <button class="calc-btn function trig" data-action="sin">sin</button>
+                    <button class="calc-btn function trig" data-action="cos">cos</button>
+                    <button class="calc-btn function trig" data-action="tan">tan</button>
+                    <button class="calc-btn function" data-action="deg" id="degBtn">DEG</button>
+                    <button class="calc-btn memory" data-action="mr">MR</button>
+                </div>
+
+                <!-- Programmer Mode Buttons -->
+                <div class="button-grid programmer-grid" id="programmerGrid">
+                    <!-- Base Selection Row -->
+                    <button class="calc-btn base-btn active" data-base="hex">HEX</button>
+                    <button class="calc-btn base-btn" data-base="dec">DEC</button>
+                    <button class="calc-btn base-btn" data-base="oct">OCT</button>
+                    <button class="calc-btn base-btn" data-base="bin">BIN</button>
+                    <button class="calc-btn clear" data-action="clear">C</button>
+
+                    <!-- Bitwise Row -->
+                    <button class="calc-btn bitwise" data-action="and">AND</button>
+                    <button class="calc-btn bitwise" data-action="or">OR</button>
+                    <button class="calc-btn bitwise" data-action="xor">XOR</button>
+                    <button class="calc-btn bitwise" data-action="not">NOT</button>
+                    <button class="calc-btn operator" data-action="backspace"><i
+                            class="fas fa-delete-left"></i></button>
+
+                    <!-- Shift Row -->
+                    <button class="calc-btn bitwise" data-action="lsh">LSH</button>
+                    <button class="calc-btn bitwise" data-action="rsh">RSH</button>
+                    <button class="calc-btn function" data-action="(">&#40;</button>
+                    <button class="calc-btn function" data-action=")">&#41;</button>
+                    <button class="calc-btn operator" data-action="/">÷</button>
+
+                    <!-- Hex Row A-F -->
+                    <button class="calc-btn hex-btn" data-value="A">A</button>
+                    <button class="calc-btn number" data-value="7">7</button>
+                    <button class="calc-btn number" data-value="8">8</button>
+                    <button class="calc-btn number" data-value="9">9</button>
+                    <button class="calc-btn operator" data-action="*">×</button>
+
+                    <button class="calc-btn hex-btn" data-value="B">B</button>
+                    <button class="calc-btn number" data-value="4">4</button>
+                    <button class="calc-btn number" data-value="5">5</button>
+                    <button class="calc-btn number" data-value="6">6</button>
+                    <button class="calc-btn operator" data-action="-">−</button>
+
+                    <button class="calc-btn hex-btn" data-value="C">C</button>
+                    <button class="calc-btn number" data-value="1">1</button>
+                    <button class="calc-btn number" data-value="2">2</button>
+                    <button class="calc-btn number" data-value="3">3</button>
+                    <button class="calc-btn operator" data-action="+">+</button>
+
+                    <!-- Bottom Row -->
+                    <button class="calc-btn hex-btn" data-value="D">D</button>
+                    <button class="calc-btn hex-btn" data-value="E">E</button>
+                    <button class="calc-btn hex-btn" data-value="F">F</button>
+                    <button class="calc-btn number" data-value="0">0</button>
+                    <button class="calc-btn equals" data-action="=">=</button>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Calculator Pro 3D © 2024 | Built with <i class="fas fa-heart"></i> and Three.js</p>
+        </footer>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
